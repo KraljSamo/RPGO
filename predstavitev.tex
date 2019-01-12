@@ -133,5 +133,62 @@ Primer:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Racionalni kubični krožni loki}
+\end{frame}
+
+\begin{frame}{Konstrukcija kubične polkrožnice}
+Želimo konstruirati polovico krožnice. Spomnimo se enačb za kontrolne točke kubčnih bezierjevih krožnih lokov:
+
+\begin{align*}
+w_{1} = \cos \theta \tilde{x_{1}} - \sin \theta  \tilde{y_{1}} \\
+w_{2} = \cos \theta  \tilde{x_{2}} + \sin \theta  \tilde{y_{2}} \\
+3(\sin \theta )^{2} \tilde{x_{1}}^2 + 3(\cos \theta )^{2} \tilde{y_{1}}^2 - 4 \sin \theta \tilde{y_{2}} + 6\sin \theta \cos \theta \tilde{x_{1}}\tilde{y_{1}} = 0 \\
+3(\sin \theta )^{2} \tilde{x_{2}}^2 + 3(\cos \theta )^{2} \tilde{y_{2}}^2 + 4 \sin \theta \tilde{y_{1}} - 6\sin \theta \cos \theta \tilde{x_{2}}\tilde{y_{2}} = 0 \\
+9\sin^{2}\theta \tilde{x_{1}}\tilde{x_{2}} + 9 \cos \theta \sin \theta \tilde{y_{1}}\tilde{x_{2}} -\\ -9\cos \theta \sin \theta \tilde{x_{1}} \tilde{y_{2}} + 9 (1 + \sin^2 \theta) \tilde{y_{1}} \tilde{y_{2}} - 2\sin^2\theta = 0
+\end{align*}
+\end{frame}
+
+\begin{frame}{Konstrukcija kubične polkrožnice}
+Vstavimo $\theta = \frac{\pi}{2}$.
+\begin{align*}
+w_{1} = - \tilde{y_{1}} \\
+w_{2} = \tilde{y_{2}} \\
+3\tilde{x_{1}}^2 - 4 \tilde{y_{2}} = 0 \\
+3 \tilde{x_{2}}^2 + 4 \tilde{y_{1}} = 0 \\
+9 \tilde{x_{1}} \tilde{x_{2}} + 18 \tilde{y_{1}} \tilde{y_{2}} - 2 = 0
+\end{align*}
+\end{frame}
+\begin{frame}{Konstrukcija kubične polkrožnice}
+Označimo $\alpha = \frac{3\tilde{x_{1}}}{2}$ in dobimo rešitev:
+
+\begin{columns}
+\column{0.5\linewidth}
+\begin{align*}
+\tilde{P_{0}} &= (0,-1,1) \\
+\tilde{P_{1}} &= (\frac{2\alpha}{3},-\frac{1}{3\alpha^2},\frac{1}{3\alpha^2}) \\
+\tilde{P_{2}} &= (\frac{2}{3\alpha},\frac{\alpha^2}{3}, \frac{\alpha^2}{3}) \\
+\tilde{P_{3}} &= (0, 1,1)
+\end{align*}
+\column{0.5\linewidth}
+\begin{align*}
+P_{0} &= (0,1) \\
+P_{1} &= (2\alpha^3, -1) \\
+P_{2} &= (\frac{2}{\alpha^3}, 1) \\
+P_{3} &= (0, 1) \\
+w &= (1, \frac{1}{3\alpha^2}, \frac{\alpha^2}{3}, 1)
+\end{align*}
+\end{columns}
+
+\end{frame}
+\begin{frame}{Konstrukcija kubične polkrožnice}
+\begin{itemize}
+\item Narišemo premici $y=1$ in $y = -1$
+\item Potegnemo poljubno tangento na enotsko krožnico
+\item Z $x_{1}$ in $x_{2}$ označimo presečišča te tangente z $y=1$ in $y=-1$.
+\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne bezierjeve krivulje skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
+
+\end{itemize}
+\end{frame}
+
 
 \end{document}
