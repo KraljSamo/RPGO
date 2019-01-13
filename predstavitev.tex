@@ -134,7 +134,64 @@ Primer:
 \end{frame}
 
 \begin{frame}{Racionalni kubični krožni loki}
+Zanima nas, kakšne krožne loke lahko opišemo s kubično racionalno bezierjevo krivuljo pri pogoju, da bodo vse uteži pozitivne.
+Kako pridemo do enačb kontrolnih točk?
+$$
+X(t)^2 + Y(t)^2 - W(t)^2 = 0
+$$
+\begin{align*}
+X(t) &= x_{0} B_{0}^3 (t) + x_{1} B_{1}^3 (t) + x_{2} B_{2}^3 + x_{3} B_{3}^3 = \\
+&= x_{0} \binom{3}{0} (1-t)^3 + x_{1} \binom{3}{1} t(1-t)^2 + x_{2} \binom{3}{2} t^2(1-t) + x_{3} \binom{3}{3} t^3
+\end{align*}
 \end{frame}
+
+\begin{frame}
+\begin{align*}
+x_{0}(1-t)^3 \cdot 3x_{2}t^2(1-t) &= \\
+3x_{0} x_{2} \cdot t^2 (1-t)^4 & = \\
+3x_{0}x_{2} \frac{\binom{6}{2}}{\binom{6}{2}} t^2 (1-t)^4 &= \\
+3x_{0}x_{2} \frac{1}{15} \binom{6}{2} t^2 (1-t)^4 &= \\
+\frac{1}{5} x_{0}x_{2} B_{2}^6(t)
+\end{align*}
+Poberemo skupaj koeficiente pri vsakem $B_{i}^6$, $i=0,1,2,3,4,5,6$. Ker Bernsteinovi polinomi tvorijo bazo, tako dobimo 7 enačb.
+\end{frame}
+
+\begin{frame}{Racionalni kubični krožni loki}
+Lahko privzamemo, da sta 
+\begin{align*}
+\tilde{P_{0}} &= (\cos \theta, - \sin \theta, 1) \\
+\tilde{P_{3}} &= (\cos \theta, \sin \theta, 1)
+\end{align*}
+kjer je $\theta$ polovica loka, ki ga želimo opisat. 
+Potrebujemo še 
+\begin{align*}
+\tilde{P_{1}} = (\tilde{x_{1}}, \tilde{y_{1}}, w_{1}) \\
+\tilde{P_{2}} = (\tilde{x_{1}}, \tilde{y_{1}}, w_{1})
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Racionalni kubični krožni loki}
+Dobimo sistem 5 enačb za 6 neznank:
+$$
+w_{1} = \cos \theta \tilde{x_{1}} - \sin \theta  \tilde{y_{1}} 
+$$
+$$
+w_{2} = \cos \theta  \tilde{x_{2}} + \sin \theta  \tilde{y_{2}} 
+$$
+$$
+3(\sin \theta )^{2} \tilde{x_{1}}^2 + 3(\cos \theta )^{2} \tilde{y_{1}}^2 - 4 \sin \theta \tilde{y_{2}} + 6\sin \theta \cos \theta \tilde{x_{1}}\tilde{y_{1}} = 0 
+$$
+$$
+3(\sin \theta )^{2} \tilde{x_{2}}^2 + 3(\cos \theta )^{2} \tilde{y_{2}}^2 + 4 \sin \theta 
+\tilde{y_{1}} - 6\sin \theta \cos \theta \tilde{x_{2}}\tilde{y_{2}} = 0 
+$$
+\begin{align*}
+9\sin^{2}\theta \tilde{x_{1}}\tilde{x_{2}} + 9 \cos \theta \sin \theta \tilde{y_{1}}\tilde{x_{2}} -\\ -9\cos \theta \sin \theta \tilde{x_{1}} \tilde{y_{2}} + 9 (1 + \sin^2 \theta) \tilde{y_{1}} \tilde{y_{2}} - 2\sin^2\theta = 0
+\end{align*}
+
+\end{frame}
+
 
 \begin{frame}{Konstrukcija kubične polkrožnice}
 Želimo konstruirati polovico krožnice. Spomnimo se enačb za kontrolne točke kubčnih bezierjevih krožnih lokov:
@@ -185,7 +242,7 @@ w &= (1, \frac{1}{3\alpha^2}, \frac{\alpha^2}{3}, 1)
 \item Narišemo premici $y=1$ in $y = -1$
 \item Potegnemo poljubno tangento na enotsko krožnico
 \item Z $x_{1}$ in $x_{2}$ označimo presečišča te tangente z $y=1$ in $y=-1$.
-\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne bezierjeve krivulje skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
+\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne bezierjeve krivulje, ki nariše polovico krožnice, skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
 
 \end{itemize}
 \end{frame}
