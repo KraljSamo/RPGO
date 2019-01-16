@@ -69,9 +69,9 @@ end
 
 % Dolo?imo barvo sto�?a. (R,G,B) shema.
 COLORCONE = zeros(size(RZ,1), size(RZ,1),3);
-COLORCONE(:,:,1) = (240/256)*ones(size(RZ,1));
-COLORCONE(:,:,2) = (240/256)*ones(size(RZ,1));
-COLORCONE(:,:,3) = (240/256)*ones(size(RZ,1));
+COLORCONE(:,:,1) = (220/256)*ones(size(RZ,1));
+COLORCONE(:,:,2) = (220/256)*ones(size(RZ,1));
+COLORCONE(:,:,3) = (220/256)*ones(size(RZ,1));
 
 hold on 
 

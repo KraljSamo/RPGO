@@ -5,7 +5,7 @@ X = linspace(0,5,100);
 XK = linspace(-pi/2, pi/2, 100);
 
 % To?ka na krožnici od koder potegnemo tangento
-x0 = 0.99;
+x0 = 1;
 y0 = (1 - x0^2)^0.5;
 
 % Koeficient in prosti ?len premice
@@ -34,7 +34,7 @@ hold on
 axis equal
 axis([0,5,-2,2])
 
-pause;
+pause(1);
 
 % Narišemo vodoravni premici
 plot(X, ones(size(X,2),1), 'k');

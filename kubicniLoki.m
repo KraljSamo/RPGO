@@ -1,7 +1,7 @@
 % Kvarti?ne bezierjeve krivulje
 
-b = 0.5;
-theta = 2*pi/3;
+b = 1;
+theta = 140*pi/180;
 
 B = [cos(theta), -sin(theta), 1;
     2/(3*b^0.5) + b*cos(theta)/3, -b*sin(theta)/3, (2*cos(theta)/(3*b^0.5) + b/3);
@@ -58,9 +58,9 @@ end
 
 % Dolo?imo barvo stož?a. (R,G,B) shema.
 COLORCONE = zeros(size(RZ,1), size(RZ,1),3);
-COLORCONE(:,:,1) = (240/256)*ones(size(RZ,1));
-COLORCONE(:,:,2) = (240/256)*ones(size(RZ,1));
-COLORCONE(:,:,3) = (240/256)*ones(size(RZ,1));
+COLORCONE(:,:,1) = (220/256)*ones(size(RZ,1));
+COLORCONE(:,:,2) = (220/256)*ones(size(RZ,1));
+COLORCONE(:,:,3) = (220/256)*ones(size(RZ,1));
 
 hold on 
 
