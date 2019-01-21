@@ -1,7 +1,7 @@
 % Kvarti?ne bezierjeve krivulje
 
-b = 1;
-theta = 140*pi/180;
+b = 0.85;
+theta = 120*pi/180;
 
 B = [cos(theta), -sin(theta), 1;
     2/(3*b^0.5) + b*cos(theta)/3, -b*sin(theta)/3, (2*cos(theta)/(3*b^0.5) + b/3);

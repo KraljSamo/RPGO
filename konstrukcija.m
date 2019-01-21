@@ -5,7 +5,7 @@ X = linspace(0,5,100);
 XK = linspace(-pi/2, pi/2, 100);
 
 % To?ka na krožnici od koder potegnemo tangento
-x0 = 1;
+x0 = 0.85;
 y0 = (1 - x0^2)^0.5;
 
 % Koeficient in prosti ?len premice

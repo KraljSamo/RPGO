@@ -6,6 +6,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 
 \def\R{\mathbb{R}} % mnozica realnih stevil
@@ -80,10 +81,14 @@ Za kontrolni poligon moramo izbrati štiri točke. Krivulja interpolira prvo in 
 
 \subsection{Krivulja stopnje 4}
 Pri krivulji četrte stopnje je svobode pri izbiranju točk na kontrolnem poligonu več, zato si izberimo drugačen pristop. V enačbo $$\tilde{X}(t)^2 + \tilde{Y}(t)^2 - W(t)^2 = 0$$ po komponentah vstavimo enačbo $$B^4(t) = \sum_{i=0}^4b_iB_i^4(t).$$
-
-mogoče bi semle premaknil tisto ugotovitev, kako se Bernsteinovi množijo med sabo?
-
-Ker so Bernsteinovi polinomi baza prostora, bo enakost veljala, ko bo seštevek koeficientov pred $i$-tim polinomom enak 0. Upoštevamo še, da lahko prvo in zadnjo točko postavimo na $\tilde{P}_0 = (1,0, 1), \tilde{P}_4 = (1,0, 1)$ ter da druga in predzadnja točka ležita v tangentni ravnini $\tilde{P}_0$, to je ravnini $x = w$. S tem se prejšnjih devet enačb poenostavi v naslednjih pet:
+\noindent
+Členi v enačbi so kvadrirani, tako da bomo med seboj morali množiti Bernsteinove polinome. Izpeljemo:
+\begin{align*}
+B_{i}^{n}(t) \cdot B_{j}^{m}(t) &= \binom{n}{i} t^i (1-t)^{n-i} \binom{m}{j} t^j (1-t)^{m-j} = \\
+& = \binom{n}{i} \binom{m}{j} t^{i+j} (1-t)^{n+m-i-j} = \\ 
+&=\binom{n}{i}\binom{m}{j} \frac{\binom{n+m}{i+j}}{\binom{n+m}{i+j}} t^{i+j}(1-t)^{n+m-i-j} = \frac{\binom{n}{i}\binom{m}{j}}{\binom{n+m}{i+j}} B_{i+j}^{n+m}(t)
+\end{align*}
+Med seboj bomo množili Bernsteinove polinome stopnje 4, tako da bomo na koncu dobili Bernsteinove polinome stopnje 8. Ker so le ti baza prostora, bo enakost veljala, ko bo seštevek koeficientov pred $i$-tim polinomom enak 0. Upoštevamo še, da lahko prvo in zadnjo točko postavimo na $\tilde{P}_0 = (1,0, 1), \tilde{P}_4 = (1,0, 1)$ ter da druga in predzadnja točka ležita v tangentni ravnini $\tilde{P}_0$, to je ravnini $x = w$. S tem se prejšnjih devet enačb poenostavi v naslednjih pet:
 \begin{align*}
 \tilde{y}_3 + \tilde{y}_1 &= 0\\
 \tilde{x}_3 + \tilde{x}_1 &= 0\\
@@ -117,24 +122,6 @@ Oglejmo si, kaj se zgodi, če izberemo $\tilde{x}_1=0$. Tedaj nimamo več negati
 Težave odpravimo, če dani krivulji dvignemo stopnjo -- krivulja ostane enaka, kontrolni poligon pa se pomakne bliže krivulji. Izkaže se, da so pogoji za obstoj take krivulje tedaj $$-\frac{1}{4} < \tilde{x}_1 < \frac{1}{4}$$ in $$-\frac{2}{3}w_2 < \tilde{x}_1 <  \frac{2}{3}w_2.$$
 Za primer na sliki 4 je izbran kontrolni poligon z dvema ničelnima utežema, nato pa je z dvigom stopnje dobljen desni poligon, ki nima več nepozitivnih uteži.
 
-%\begin{equation*}
-%\begin{aligned}[c]
-%\tilde{P}_0 &= (1,0, 1)\\
-%\tilde{P}_1 &= (0, 1, 0)\\
-%\tilde{P}_2 &= (-1, 0, 1/3)\\
-%\tilde{P}_3 &= (0, -1, 0)\\
-%\tilde{P}_4 &= (1, 0, 1), \\
-%\end{aligned}
-%\begin{aligned}[c]
-%\tilde{P}_0 &= (1,0, 1)\\
-%\tilde{P}_1 &= (1/5, 4/5, 1/5)\\
-%\tilde{P}_2 &= (-3/5, 2/5, 1/5)\\
-%\tilde{P}_3 &= (-3/5, -2/5, 1/5)\\
-%\tilde{P}_4 &= (1/5, -4/5, 1/5)\\
-%\tilde{P}_5 &= (1, 0, 1). \\
-%\end{aligned}
-%\end{equation*}
-
 \begin{align*}
 \tilde{P}_0 &= (1,0, 1) & \tilde{P}_0 &= (1,0, 1)\\
 \tilde{P}_1 &= (0, 1, 0) &\tilde{P}_1 &= (1/5, 4/5, 1/5)\\
@@ -143,6 +130,124 @@ Za primer na sliki 4 je izbran kontrolni poligon z dvema ničelnima utežema, na
 \tilde{P}_4 &= (1, 0, 1) & \tilde{P}_4 &= (1/5, -4/5, 1/5)\\
 & & \tilde{P}_5 &= (1, 0, 1).
 \end{align*}
+
+\section{Kubičen Bezierjev krožni lok}
+
+Zgoraj smo videli, da so uteži kvadratnega Bezierjevega krožnega loka $(1, \cos \theta, 1)$, kjer je $\theta$ polovica krožnega loka, ki ga opišemo. Če želimo da so naše nenegativne, mora biti $\theta \leq \frac{\pi}{2}$. Od tod sledi, da je največji krožni lok, ki ga lahko opišemo, ter še imamo nenegativne uteži, velik $180$ stopinj. V tem poglavju nas zanima, kakšen je največji krožni lok, ki ga lahko opišemo s kubično Bezierjevo krivuljo z nenegativnimi utežmi.
+
+Tudi tu se lahko lahko problema lotimo tako, da vstavimo krivuljo v enačbo stožča in s tem dobimo pogoje za kontrolne točke Bezierjeve krivulje. Predpostavimo lahko, da sta $\tilde{P_{0}} = (\cos \theta, -\sin \theta, 1)$ in $\tilde{P_{3}} = (\cos \theta, \sin \theta, 1)$ in tako dobimo sledeč sistem enačb za $\tilde{P_{1}}$ in $\tilde{P_{2}}$:
+
+\begin{align*}
+w_{1} = \cos \theta \tilde{x_{1}} - \sin \theta  \tilde{y_{1}} \\
+w_{2} = \cos \theta  \tilde{x_{2}} + \sin \theta  \tilde{y_{2}} \\
+3(\sin \theta )^{2} \tilde{x_{1}}^2 + 3(\cos \theta )^{2} \tilde{y_{1}}^2 - 4 \sin \theta \tilde{y_{2}} + 6\sin \theta \cos \theta \tilde{x_{1}}\tilde{y_{1}} = 0 \\
+3(\sin \theta )^{2} \tilde{x_{2}}^2 + 3(\cos \theta )^{2} \tilde{y_{2}}^2 + 4 \sin \theta \tilde{y_{1}} - 6\sin \theta \cos \theta \tilde{x_{2}}\tilde{y_{2}} = 0 \\
+9\sin^{2}\theta \tilde{x_{1}}\tilde{x_{2}} + 9 \cos \theta \sin \theta \tilde{y_{1}}\tilde{x_{2}} -\\ -9\cos \theta \sin \theta \tilde{x_{1}} \tilde{y_{2}} + 9 (1 + \sin^2 \theta) \tilde{y_{1}} \tilde{y_{2}} - 2\sin^2\theta = 0
+\end{align*}
+
+Sistem je zelo kompliciran in težko rešljiv v odvisnosti od $\theta$. Tako da se problema raje lotimo na drug način. \\
+\medskip
+
+\noindent
+\textbf{Izrek:} Če je krivulja
+$$
+C(t) = \frac{(\tilde{X}(t), \tilde{Y}(t))}{W(t)}
+$$
+omejena za vse $t \in [-\infty, \infty]$ in so $\tilde{X(t)}, \tilde{Y(t)}$ in $W(t)$ polinomi, ki nimajo skupnih faktorjev, potem nobeden izmed $\tilde{X(t)}, \tilde{Y(t)}, W(t)$ ne more biti lihe stopnje.
+
+\medskip
+
+\noindent
+
+Dokaz je na voljo v \cite{article}. Kot posledica izreku sledi, da so vsi možni kubični Bezierjevi krožni loki oblike 
+$$
+C(t) = \frac{(\tilde{X}(t), \tilde{Y}(t))(a B_{0}^1(t) + b B_{1}^1(t))}{W(t)(a B_{0}^1(t) + b B_{1}^1(t))},
+$$
+kjer je 
+$$
+\frac{(\tilde{X}(t), \tilde{Y}(t))}{W(t)} 
+$$
+kvadratični krožni lok in $a,b$ poljubni števili. Tu bomo za večjo svobodo za kontrolne točke kvadratičnega krožnega loka imeli parameter $w_{2}$ poljuben in ne reparametriziran na $1$.
+\begin{align*}
+\tilde{P_{0}} &= (\cos \theta, - \sin \theta, 1) \\
+\tilde{P_{1}} &= (\sqrt{w_{2}}, 0, \sqrt{w_{2}} \cos \theta) \\
+\tilde{P_{2}} &= (w_{2}\cos \theta, - w_{2}\sin \theta, w_{2}) \\
+\end{align*}
+
+\noindent
+Najbolj nas zanimajo vrednosti uteži nove krivulje, saj želimo, da so nenegativne. Za $w'_{0}$ in $w'_{3}$ dobimo pogoja:
+\begin{align*}
+& w'_{0} = a & w'_{3} = b w_{2}
+\end{align*}
+Ker lahko predpostavimo, da sta prva in zadnja utež enaki $1$, imamo $a=1$ in $w_{2} = \frac{1}{b}$. Od tod nato dobimo kontrolne točke kubičnega Bezierjevega krožnega loka:
+\begin{align*}
+\tilde{P_{0}} &= (\cos \theta, - \sin \theta, 1) \\
+\tilde{P_{1}} &= (\frac{2}{3 \sqrt{b}} + \frac{b \cos \theta}{3}, - \frac{b \sin \theta}{3}, \frac{2 \cos \theta}{3 \sqrt{b}} + \frac{b}{3}) \\
+\tilde{P_{2}} &= (\frac{\cos \theta}{3b} + \frac{2\sqrt{b}}{3}, \frac{\sin \theta}{3b}, \frac{2 \cos \theta \sqrt{b}}{3} + \frac{1}{3b}) \\
+\tilde{P_{3}} &= (\cos \theta, \sin \theta, 1)
+\end{align*}
+Želimo, da sta uteži $w_{1}'$ in $w_{2}'$ nenegativni. Pogoja se poenostavita v
+\begin{align*}
+&\cos \theta \geq -\frac{b^{\frac{3}{2}}}{2}& \cos \theta \geq - \frac{1}{2 b^{\frac{3}{2}}}
+\end{align*}
+Maksimalen $\theta$ dosežemo pri izbiri $b=1$. Kot $\theta$ je v tem primeru $\frac{2\pi}{3}$. Maksimalen krožni lok, ki ga lahko opišemo s kubično Bezierjevo krivuljo z nenegativnimi utežmi, je torej 240 stopinj.
+
+\begin{figure}[h]
+\includegraphics[scale=0.45]{b1kot120.png}
+\includegraphics[scale=0.45]{b085kot120.png}
+\centering
+\caption{Levo: Krožni lok velikosti 240 stopinj pri izbiri $b=1$, uteži sta v tem primeru ravno 0 in desno: Enak krožni lok pri izbiri $b=0.85$. Vidimo, da je ena utež negativna.}
+\end{figure}
+
+\section{Konstrukcija kubične polkrožnice}
+Naša želja je geometrijsko konstruirati kontrolne točke kubične Bezierjeve krivulje, ki nam bo opisala polkrožnico ($\theta = \frac{\pi}{2}$). V enačbah za kubične krožne loke zgoraj, lahko vidimo, da imamo veliko členov s $\cos \theta$ in $\sin \theta$. Ko bomo vstavili $\theta=\frac{\pi}{2}$, se bodo enačbe zelo poenostavile. 
+
+\begin{align*}
+w_{1} &= - \tilde{y_{1}} \\
+w_{2} &= \tilde{y_{2}} \\
+3\tilde{x_{1}}^2 - 4 \tilde{y_{2}} &= 0 \\
+3 \tilde{x_{2}}^2 + 4 \tilde{y_{1}} &= 0 \\
+9 \tilde{x_{1}} \tilde{x_{2}} + 18 \tilde{y_{1}} \tilde{y_{2}} - 2 &= 0
+\end{align*}
+Sistem je rešljiv in če označimo z  $\alpha = \frac{3\tilde{x_{1}}}{2}$, so kontrolne točke kubične Bezierjeve krivulje, ki opiše polkrožnico, sledeče:
+
+\begin{align*}
+\tilde{P_{0}} &= (0,-1,1)  & P_{0} &= (0,-1) \\
+\tilde{P_{1}} &= (\frac{2\alpha}{3},-\frac{1}{3\alpha^2},\frac{1}{3\alpha^2}) & P_{1} &= (2\alpha^3, -1) \\
+\tilde{P_{2}} &= (\frac{2}{3\alpha},\frac{\alpha^2}{3}, \frac{\alpha^2}{3}) & P_{2} &= (\frac{2}{\alpha^3}, 1) \\ 
+\tilde{P_{3}} &= (0, 1,1) & P_{3} &= (0, 1)
+\end{align*}
+Ko le-te projiciramo na ravnino $w=1$, dobimo kontrolne točke racionalne Bezierjeve krivulje z utežmi $w = (1, \frac{1}{3\alpha^2}, \frac{\alpha^2}{3}, 1)$.
+\medskip
+
+\noindent
+\newpage
+\textbf{Geometrijska konstrukcija:}
+\begin{enumerate}
+\item Narišemo premici $y=-1$ in $y=1$.
+\item Potegnemo poljubno tangento na enotsko krožnico.
+\item Poiščemo presečišči tangente s premicama $y=-1$ in $y=1$ in ju označimo z $x_{1}$ in $x_{2}$.
+\item Podvojimo $x$ koordinato teh dveh točk.
+\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne bezierjeve krivulje, ki nariše polovico krožnice, skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
+\end{enumerate}
+
+Potrebno je še pokazati, da velja $x_{1}x_{2}=1$, kar pa ni težko z nekaj algebre.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.60]{konstrukcija.png}
+\caption{Z modrimi pikami so označene kontrolne točke, z rdečimi zvezdami pa Farinove točke.}
+\end{figure}
+
+
+
+
+\newpage
+\begin{thebibliography}{1}
+
+  \bibitem{article} J. J. Chou \href{https://www.sciencedirect.com/science/article/pii/001044859591140G}{\em Higher Order Bezier Circles, Computer Aided Design, 27 (4)}  		1995, (303-309).
+
+\end{thebibliography}
 
 
 
