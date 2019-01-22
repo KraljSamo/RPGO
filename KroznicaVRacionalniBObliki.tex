@@ -61,8 +61,8 @@ V tem poglavju si bomo ogledali, kako krožnico opišemo z eno samo racionalno k
 Ali se sklenjeno krožnico da opisati s krivuljo stopnje dve? Da to ni mogoče, se hitro prepričamo z naslednjim razmislekom: vsaka krivulja stopnje 2 je parabola; vsako parabolo, ki leži na stožcu, pa dobimo s presekom stožca z ravnino, ki je vzporedna nosilki stožca. Opazimo, da bolj, kot bomo ravnino približevali nosilki stožca, večji kot bo opisal krožni lok v projekciji. Vendar ko se ravnina in stožec stakneta, je presečišče zgolj premica, ta pa se v projekciji slika v eno samo točko. Krožnice zato ne moremo predstaviti s kvadratično racionalno krivuljo.
 
 \begin{figure}[h]
-\includegraphics[scale=0.25]{kvadraticna.png}
-\includegraphics[scale=0.25]{kvadraticna2.png}
+\includegraphics[scale=0.23]{kvadraticna.png}
+\includegraphics[scale=0.23]{kvadraticna2.png}
 \centering
 \caption{Parabola, dobljena kot presek ravnine in stožca, ki se preslika v krožni lok.}
 \end{figure}
@@ -113,14 +113,14 @@ Opazimo, da ne glede na izbor $w_2$ in $\tilde{x}_1$ uteži nikoli ne bodo vse p
 \end{figure}
 
 Oglejmo si, kaj se zgodi, če izberemo $\tilde{x}_1=0$. Tedaj nimamo več negativnih uteži, imamo pa dve ničelni. Točki v kontrolnem poligonu, za kateri velja $w=0$, pri projekciji na ravnino $w=1$ predstavljata točki v neskončnosti, česar si pri implementaciji in uporabi ne želimo.
-\begin{figure}[h]
+\begin{figure}[h!]
 \includegraphics[scale=0.24]{nicelneutezi.png}
 \includegraphics[scale=0.24]{kvinticna.png}
 \centering
 \caption{Levo: krožnica pri krivulji stopnje 4 z dvema ničelnima utežema in desno: ista krivulja z dvignjeno stopnjo, ki ima vse uteži pozitivne.}
 \end{figure}
 Težave odpravimo, če dani krivulji dvignemo stopnjo -- krivulja ostane enaka, kontrolni poligon pa se pomakne bliže krivulji. Izkaže se, da so pogoji za obstoj take krivulje tedaj $$-\frac{1}{4} < \tilde{x}_1 < \frac{1}{4}$$ in $$-\frac{2}{3}w_2 < \tilde{x}_1 <  \frac{2}{3}w_2.$$
-Za primer na sliki 4 je izbran kontrolni poligon z dvema ničelnima utežema, nato pa je z dvigom stopnje dobljen desni poligon, ki nima več nepozitivnih uteži.
+Za primer na sliki 4 je izbran kontrolni poligon z dvema ničelnima utežema, nato pa je z dvigom stopnje dobljen desni poligon, ki nima več nepozitivnih uteži:
 
 \begin{align*}
 \tilde{P}_0 &= (1,0, 1) & \tilde{P}_0 &= (1,0, 1)\\
@@ -133,7 +133,7 @@ Za primer na sliki 4 je izbran kontrolni poligon z dvema ničelnima utežema, na
 
 \section{Kubičen Bezierjev krožni lok}
 
-Zgoraj smo videli, da so uteži kvadratnega Bezierjevega krožnega loka $(1, \cos \theta, 1)$, kjer je $\theta$ polovica krožnega loka, ki ga opišemo. Če želimo da so uteži nenegativne, mora biti $\theta \leq \frac{\pi}{2}$. Od tod sledi, da je največji krožni lok, ki ga lahko opišemo, ter še imamo nenegativne uteži, velik $180$ stopinj. V tem poglavju nas zanima, kakšen je največji krožni lok, ki ga lahko opišemo s kubično Bezierjevo krivuljo z nenegativnimi utežmi.
+Zgoraj smo videli, da so uteži kvadratnega Bezierjevega krožnega loka $(1, \cos \theta, 1)$, kjer je $\theta$ polovica krožnega loka, ki ga opišemo. Če želimo, da so uteži nenegativne, mora biti $\theta \leq \frac{\pi}{2}$. Od tod sledi, da je največji krožni lok, ki ga lahko opišemo ter še imamo nenegativne uteži, velik $180$ stopinj. V tem poglavju nas zanima, kakšen je največji krožni lok, ki ga lahko opišemo s kubično Bezierjevo krivuljo z nenegativnimi utežmi.
 
 Tudi tu se lahko lahko problema lotimo tako, da vstavimo krivuljo v enačbo stožča in s tem dobimo pogoje za kontrolne točke Bezierjeve krivulje. Predpostavimo lahko, da sta $\tilde{P_{0}} = (\cos \theta, -\sin \theta, 1)$ in $\tilde{P_{3}} = (\cos \theta, \sin \theta, 1)$ in tako dobimo sledeč sistem enačb za $\tilde{P_{1}}$ in $\tilde{P_{2}}$:
 
@@ -153,7 +153,7 @@ Sistem je zelo kompliciran in težko rešljiv v odvisnosti od $\theta$. Tako da 
 $$
 C(t) = \frac{(\tilde{X}(t), \tilde{Y}(t))}{W(t)}
 $$
-omejena za vse $t \in [-\infty, \infty]$ in so $\tilde{X(t)}, \tilde{Y(t)}$ in $W(t)$ polinomi, ki nimajo skupnih faktorjev, potem nobeden izmed $\tilde{X(t)}, \tilde{Y(t)}, W(t)$ ne more biti lihe stopnje.
+omejena za vse $t \in [-\infty, \infty]$ in so $\tilde{X(t)}, \tilde{Y(t)}$ in $W(t)$ polinomi, ki nimajo skupnih faktorjev, potem noben izmed $\tilde{X(t)}, \tilde{Y(t)}, W(t)$ ne more biti lihe stopnje.
 
 \medskip
 
@@ -200,7 +200,7 @@ Maksimalen $\theta$ dosežemo pri izbiri $b=1$. Kot $\theta$ je v tem primeru $\
 \end{figure}
 
 \section{Konstrukcija kubične polkrožnice}
-Naša želja je geometrijsko konstruirati kontrolne točke kubične Bezierjeve krivulje, ki nam bo opisala polkrožnico ($\theta = \frac{\pi}{2}$). V enačbah za kubične krožne loke zgoraj, lahko vidimo, da imamo veliko členov s $\cos \theta$ in $\sin \theta$. Ko bomo vstavili $\theta=\frac{\pi}{2}$, se bodo enačbe zelo poenostavile. 
+Naša želja je geometrijsko konstruirati kontrolne točke kubične Bezierjeve krivulje, ki nam bo opisala polkrožnico ($\theta = \frac{\pi}{2}$). V enačbah za kubične krožne loke zgoraj lahko vidimo, da imamo veliko členov s $\cos \theta$ in $\sin \theta$. Ko bomo vstavili $\theta=\frac{\pi}{2}$, se bodo enačbe zelo poenostavile. 
 
 \begin{align*}
 w_{1} &= - \tilde{y_{1}} \\
@@ -228,7 +228,7 @@ Ko le-te projiciramo na ravnino $w=1$, dobimo kontrolne točke racionalne Bezier
 \item Potegnemo poljubno tangento na enotsko krožnico.
 \item Poiščemo presečišči tangente s premicama $y=-1$ in $y=1$ in ju označimo z $x_{1}$ in $x_{2}$.
 \item Podvojimo $x$ koordinato teh dveh točk.
-\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne bezierjeve krivulje, ki nariše polovico krožnice, skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
+\item Točke $(0,-1), (2x_{1}, -1), (2x_{2}, 1)$ in $(0,1)$ so kontrolne točke racionalne Bezierjeve krivulje, ki nariše polovico krožnice, skupaj z utežmi $(1, \frac{1}{3x_{1}^{2/3}}, \frac{1}{3x_{2}^{2/3}}, 1)$.
 \end{enumerate}
 
 Potrebno je še pokazati, da velja $x_{1}x_{2}=1$, kar pa ni težko z nekaj algebre.
@@ -239,7 +239,8 @@ Potrebno je še pokazati, da velja $x_{1}x_{2}=1$, kar pa ni težko z nekaj alge
 \caption{Z modrimi pikami so označene kontrolne točke, z rdečimi zvezdami pa Farinove točke.}
 \end{figure}
 
-
+\section{Povzetek}
+V seminarski nalogi sva obravnavala krožnico in krožni lok kot racionalno Bezierjevo krivuljo. Tako racionalno krivuljo se da  predstaviti kot navadno polinomsko krivuljo v prostoru dimenzije 3, ki leži na stožcu. Pokazala sva, da je najmanjša stopnja krivulje, ki opiše sklenjen krožni lok in ima pozitivne uteži, stopnje 5; največji kot, ki ga lahko opišemo s kubičnim krožnim lokom s pozitivnimi utežmi, pa 240 stopinj. Iz izpeljave je sledila lepa geometrijska interpretacija kubičnih polkrogov, katerih kontrolne poligone se da preprosto skonstruirati z izpeljano metodo.
 
 
 \newpage
